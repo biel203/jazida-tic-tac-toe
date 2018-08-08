@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux'
-import InitialContainer from './modules/components'
-import store from './store'
-import './App.css';
+import { Provider } from 'react-redux';
+import InitialContainer from './modules/components';
+import store from './store';
+import './style'
 
 class App extends Component {
   render() {
