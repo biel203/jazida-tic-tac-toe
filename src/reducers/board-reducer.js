@@ -9,7 +9,7 @@ export const boardState = (state = initalState, action) => {
     switch (action.type) {
         case SQUARE_ARRAY_CHANGE:
             let squares = state.squares.slice();
-            squares[action.value.index] = action.value.playerTurn.symbol;
+            squares[action.value.index] = action.value.symbol;
 
             return {...state, squares};
 

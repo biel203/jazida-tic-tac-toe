@@ -8,10 +8,10 @@ class Board extends Component {
     }
 
     _handleClickSquare(index) {
-        const { playerTurn, _onClickSquare } = this.props;
+        const { symbol, _onClickSquare } = this.props;
         _onClickSquare({
             index,
-            playerTurn
+            symbol
         })
     }
 
@@ -40,9 +40,9 @@ class Board extends Component {
     }
 
     render() {
-        const { playerTurn, squares } = this.props;
+        const { symbol, playerTurn, squares } = this.props;
 
-        const status = `Jogador da vez: ${playerTurn.name} - ${playerTurn.symbol}`;
+        const status = `Jogador da vez: ${playerTurn} - ${symbol}`;
 
         if (this._verifyWinner(squares)) {
             this.hasWinner.call(this, playerTurn)

@@ -23,7 +23,7 @@ class Game extends Component {
     }
 
     render() {
-        const { players, playerTurn } = this.props;
+        const { players, playerTurn, gameHasStarted } = this.props;
         return (
             <div className="game">
                 <div className="player-one-container">
@@ -53,8 +53,8 @@ class Game extends Component {
                 </div>
 
                 <div className="game-board">
-                    {Object.keys(playerTurn).length ?
-                        <BoardContainer playerTurn={ playerTurn }/>
+                    {gameHasStarted ?
+                        <BoardContainer playerTurn={ playerTurn } symbol={ players[playerTurn].symbol }/>
                         :
                         <div className="initial-text-center" >
                             <h2>Welcome!!</h2>

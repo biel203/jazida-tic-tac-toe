@@ -1,4 +1,9 @@
-import {HAS_WINNER, CHANGE_PLAYER_NAME, START_GAME} from "../constants";
+import {HAS_WINNER,
+    CHANGE_PLAYER_NAME,
+    START_GAME,
+    SQUARE_ARRAY_CHANGE,
+    PLAYER_ONE,
+    PLAYER_TWO} from "../constants";
 
 const initalState = {
     players: {
@@ -13,7 +18,7 @@ const initalState = {
             score: 0
         }
     },
-    playerTurn: {},
+    playerTurn: "",
     winner: null,
     gameHasStarted: false
 };
@@ -45,15 +50,21 @@ export const gameState = (state = initalState, action) => {
                 },
             };
         case START_GAME:
-            debugger;
-            let playerTurn = Object.assign(state.playerTurn, action.value);
-
             return {
                 ...state,
-                playerTurn
+                gameHasStarted: true,
+                playerTurn: PLAYER_ONE
             };
 
+        case SQUARE_ARRAY_CHANGE:
+            let statePlayerTurn = Object.assign({}, state.playerTurn);
+            Object.keys(state.players).map((key, index) => {
+                if (state.playerTurn !== key) {
+                    statePlayerTurn = key;
+                }
+            });
 
+            return {...state, playerTurn: statePlayerTurn};
 
         default:
             return state;
