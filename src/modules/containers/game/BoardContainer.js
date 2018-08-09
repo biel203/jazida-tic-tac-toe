@@ -4,8 +4,7 @@ import BoardComponent from '../../components/game/Board';
 import { squareArrayChange } from '../../../actions'
 
 const mapStateToProps = state => ({
-    squares: state.boardState.squares,
-    playerTurn: state.boardState.playerTurn
+    squares: state.boardState.squares
 });
 
 const mapDispatchToProps = dispatch => ({
