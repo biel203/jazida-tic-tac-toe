@@ -3,12 +3,12 @@ import {HAS_WINNER} from "../constants";
 const initalState = {
     players: {
         playerOne: {
-            name: "Player 1",
+            name: "",
             symbol: "X",
             score: 0
         },
         playerTwo: {
-            name: "Player 2",
+            name: "",
             symbol: "O",
             score: 0
         }

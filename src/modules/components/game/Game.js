@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardContainer from '../../containers/game/BoardContainer';
+import NameBox from '../NameBox';
 
 class Game extends Component {
     render() {
@@ -7,12 +8,25 @@ class Game extends Component {
         return (
             <div className="game">
                 <div className="player-one-container">
-                    {players.playerOne.name}
+                    <h3>Player One</h3>
+
+                    {!players.playerOne.name &&
+                    <div className="left-name-textbox">
+                        <NameBox />
+                    </div>
+                    }
                 </div>
 
                 <div className="player-two-container">
-                    {players.playerTwo.name}
+                    <h3>Player Two</h3>
+
+                    {!players.playerTwo.name &&
+                    <div className="right-name-textbox">
+                        <NameBox />
+                    </div>
+                    }
                 </div>
+
 
                 <div className="game-board">
                     <BoardContainer playerTurn={ playerTurn }/>
