@@ -12,7 +12,7 @@ class NameBoxComponent extends Component {
         this.setState({name: evt.target.value})
     }
 
-    _handleSubmit(evt, name) {
+    _handleSubmit(name, evt) {
         evt.preventDefault();
         const { onChangeName } = this.props;
         onChangeName(name);

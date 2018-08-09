@@ -42,7 +42,7 @@ class Board extends Component {
     render() {
         const { playerTurn, squares } = this.props;
 
-        const status = playerTurn ? `Jogador da vez: ${playerTurn.name} - ${playerTurn.symbol}` : "Welcome!!"
+        const status = `Jogador da vez: ${playerTurn.name} - ${playerTurn.symbol}`;
 
         if (this._verifyWinner(squares)) {
             this.hasWinner.call(this, playerTurn)
@@ -52,25 +52,18 @@ class Board extends Component {
             <div>
                 <div className={playerTurn ? "status" : "initial-text-center"}>{status}</div>
 
-                {playerTurn ?
+                <div className="board-width" >
+                    {squares.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <Square index={index}
+                                        value={squares[index]}
+                                        clickSquare={this._handleClickSquare.bind(this)}/>
+                            </div>
+                        )
 
-                    <div className="board-width" >
-                        {squares.map((item, index) => {
-                            return (
-                                <div key={index}>
-                                    <Square index={index}
-                                            value={squares[index]}
-                                            clickSquare={this._handleClickSquare.bind(this)}/>
-                                </div>
-                            )
-
-                        })}
-                    </div>
-                    :
-                    <div className="initial-text-center" >
-                        <h1>Tic-Tac-Toe</h1>
-                    </div>
-                }
+                    })}
+                </div>
 
             </div>
         );
