@@ -1,4 +1,4 @@
-import {HAS_WINNER, CHANGE_PLAYER_NAME} from "../constants";
+import {HAS_WINNER, CHANGE_PLAYER_NAME, START_GAME} from "../constants";
 
 const initalState = {
     players: {
@@ -13,10 +13,9 @@ const initalState = {
             score: 0
         }
     },
-
-    playerTurn: null,
-
-    winner: null
+    playerTurn: {},
+    winner: null,
+    gameHasStarted: false
 };
 
 export const gameState = (state = initalState, action) => {
@@ -45,6 +44,15 @@ export const gameState = (state = initalState, action) => {
                     [action.value.player]: statePlayer
                 },
             };
+        case START_GAME:
+            debugger;
+            let playerTurn = Object.assign(state.playerTurn, action.value);
+
+            return {
+                ...state,
+                playerTurn
+            };
+
 
 
         default:

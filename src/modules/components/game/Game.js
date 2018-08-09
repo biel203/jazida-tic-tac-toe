@@ -6,6 +6,14 @@ import { PLAYER_ONE, PLAYER_TWO } from '../../../constants'
 
 class Game extends Component {
 
+    componentWillReceiveProps({ gameHasStarted, players, startGame }) {
+        if (!gameHasStarted) {
+            if (players.playerOne.name && players.playerTwo.name) {
+                startGame(players.playerOne);
+            }
+        }
+    }
+
     _handleChangePlayerName(player, name) {
         const { onChangePlayerName } = this.props;
         onChangePlayerName({
@@ -45,7 +53,7 @@ class Game extends Component {
                 </div>
 
                 <div className="game-board">
-                    {playerTurn ?
+                    {Object.keys(playerTurn).length ?
                         <BoardContainer playerTurn={ playerTurn }/>
                         :
                         <div className="initial-text-center" >
