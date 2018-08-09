@@ -11,3 +11,8 @@
 .board-width {
     width: 270px;
 }
+
+.initial-text-center {
+    text-align: center;
+    margin-bottom: 5px;
+}

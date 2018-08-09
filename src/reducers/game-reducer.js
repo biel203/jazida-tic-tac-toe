@@ -13,10 +13,9 @@ const initalState = {
             score: 0
         }
     },
-    playerTurn: {
-        name: "Nome teste",
-        symbol: "X"
-    },
+
+    playerTurn: null,
+
     winner: null
 };
 
