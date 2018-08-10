@@ -7,13 +7,34 @@ class Board extends Component {
         super(props)
     }
 
-    _handleClickSquare(index) {
-        const { symbol, _onClickSquare } = this.props;
-        _onClickSquare({
-            index,
-            symbol
-        })
+    componentWillReceiveProps({ squares, hasAWinner, hasDraw, resetGame }) {
+        let winner = this._verifyWinner.call(this, squares);
+        if (winner) {
+            hasAWinner(winner);
+            setTimeout(() => {
+                resetGame()
+            }, 500)
+        } else {
+            if (this._verifyDraw.call(this, squares)) {
+                hasDraw();
+                setTimeout(() => {
+                    resetGame()
+                }, 500)
+            }
+        }
     }
+
+    _verifyDraw(squares) {
+        let hasDraw = true;
+
+        for (var i = 0; i < squares.length; i++) {
+            if (!squares[i]) {
+                hasDraw = false;
+                break;
+            }
+        }
+        return hasDraw;
+    };
 
     _verifyWinner(squares) {
         const lines = [
@@ -35,18 +56,19 @@ class Board extends Component {
         return null;
     };
 
-    hasWinner(info) {
-        console.log(info)
+    _handleClickSquare(index) {
+        const { symbol, _onClickSquare } = this.props;
+        _onClickSquare({
+            index,
+            symbol
+        })
     }
+
 
     render() {
         const { symbol, playerTurn, squares } = this.props;
 
         const status = `Jogador da vez: ${playerTurn} - ${symbol}`;
-
-        if (this._verifyWinner(squares)) {
-            this.hasWinner.call(this, playerTurn)
-        }
 
         return (
             <div>

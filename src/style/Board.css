@@ -9,10 +9,15 @@
 }
 
 .board-width {
-    width: 270px;
+    width: 268px;
 }
 
 .initial-text-center {
     text-align: center;
     margin-bottom: 5px;
+}
+
+.reset-button {
+    width: 100%;
+    margin-top: 10px
 }

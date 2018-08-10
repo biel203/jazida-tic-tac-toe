@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import {reducer as toastrReducer} from 'react-redux-toastr'
+
 
 import { loadingApp } from "./app-reducer";
 
@@ -14,5 +16,8 @@ export default combineReducers({
     boardState,
 
     // GAME REDUCER
-    gameState
+    gameState,
+
+    // PLUGINS
+    toastr: toastrReducer
 })

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import BoardContainer from '../../containers/game/BoardContainer';
 import NameBox from '../NameBox';
+import {toastr} from 'react-redux-toastr'
 
 import { PLAYER_ONE, PLAYER_TWO } from '../../../constants'
 
 class Game extends Component {
+
+    container = null;
 
     componentWillReceiveProps({ gameHasStarted, players, startGame }) {
         if (!gameHasStarted) {
@@ -23,9 +26,19 @@ class Game extends Component {
     }
 
     render() {
-        const { players, playerTurn, gameHasStarted } = this.props;
+        const { players, playerTurn, gameHasStarted, resetGame, hasDraw, winner } = this.props;
+
+        if (hasDraw) {
+            toastr.info("Puts!! Deu Velha!");
+        }
+
+        if (Object.keys(winner).length) {
+            toastr.success("TEMOS UM GANHADOR!!", `${winner.name} GANHOU`)
+        }
+
         return (
             <div className="game">
+
                 <div className="player-one-container">
                     <h3>Player One</h3>
 
@@ -33,10 +46,17 @@ class Game extends Component {
                         {!players.playerOne.name ?
                             <NameBox onChangeName={this._handleChangePlayerName.bind(this, PLAYER_ONE)}/>
                             :
-                            <h4>{players.playerOne.name}</h4>
+                            <div>
+                                <h4>{players.playerOne.name}</h4>
+                                <p>{players.playerOne.score}</p>
+                            </div>
                         }
                     </div>
 
+                </div>
+
+                <div className="center-message">
+                    {}
                 </div>
 
                 <div className="player-two-container">
@@ -47,14 +67,28 @@ class Game extends Component {
                         {!players.playerTwo.name ?
                             <NameBox onChangeName={this._handleChangePlayerName.bind(this, PLAYER_TWO)}/>
                             :
-                            <h4>{players.playerTwo.name}</h4>
+                            <div>
+                                <h4>{players.playerTwo.name}</h4>
+                                <p>{players.playerTwo.score}</p>
+                            </div>
                         }
                     </div>
                 </div>
 
+                <div>
+
+                </div>
+
                 <div className="game-board">
                     {gameHasStarted ?
-                        <BoardContainer playerTurn={ playerTurn } symbol={ players[playerTurn].symbol }/>
+
+                        <div>
+                            <BoardContainer playerTurn={ playerTurn } symbol={ players[playerTurn].symbol }/>
+
+                            <button className={"reset-button"} onClick={() => resetGame()}>
+                                Resetar
+                            </button>
+                        </div>
                         :
                         <div className="initial-text-center" >
                             <h2>Welcome!!</h2>
