@@ -79,7 +79,11 @@ class Game extends Component {
                     {gameHasStarted ?
 
                         <div>
-                            <BoardContainer playerTurn={ playerTurn } symbol={ players[playerTurn].symbol }/>
+                            <BoardContainer
+                                playerTurn={ playerTurn }
+                                symbol={ players[playerTurn].symbol }
+                                players={players}
+                            />
 
                             <button className={"reset-button"} onClick={() => resetGame()}>
                                 Resetar

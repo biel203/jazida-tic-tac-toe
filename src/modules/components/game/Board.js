@@ -66,9 +66,9 @@ class Board extends Component {
 
 
     render() {
-        const { symbol, playerTurn, squares } = this.props;
+        const { symbol, playerTurn, squares, players } = this.props;
 
-        const status = `Jogador da vez: ${playerTurn} - ${symbol}`;
+        const status = `Jogador da vez: ${players[playerTurn].name} - ${symbol}`;
 
         return (
             <div>
