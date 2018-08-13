@@ -78,7 +78,8 @@ export const gameState = (state = initalState, action) => {
             return {
                 ...state,
                 playerTurn: PLAYER_ONE,
-                winner: initalState.winner
+                winner: initalState.winner,
+                draw: false
             };
 
         case SQUARE_ARRAY_CHANGE:

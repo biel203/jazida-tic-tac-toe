@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
     players: state.gameState.players,
     playerTurn: state.gameState.playerTurn,
     gameHasStarted: state.gameState.gameHasStarted,
-    hasDraw: state.gameState.hasDraw,
+    hasDraw: state.gameState.draw,
     winner: state.gameState.winner,
 });
 

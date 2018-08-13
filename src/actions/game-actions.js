@@ -4,5 +4,5 @@ export const scoreChange = value => ({type: HAS_WINNER, value});
 export const changePlayerName = value => ({type: CHANGE_PLAYER_NAME, value});
 export const startGame = value => ({type: START_GAME, value});
 export const hasAWinner = value => ({type: HAS_WINNER, value});
-export const hasDraw = () => ({type: HAS_DRAW, value: {}});
+export const hasDraw = value => ({type: HAS_DRAW, value});
 

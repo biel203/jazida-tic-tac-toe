@@ -29,7 +29,7 @@ class Game extends Component {
         const { players, playerTurn, gameHasStarted, resetGame, hasDraw, winner } = this.props;
 
         if (hasDraw) {
-            toastr.info("Puts!! Deu Velha!");
+            toastr.warning("Puts!!", "Deu velha!");
         }
 
         if (Object.keys(winner).length) {
@@ -53,10 +53,6 @@ class Game extends Component {
                         }
                     </div>
 
-                </div>
-
-                <div className="center-message">
-                    {}
                 </div>
 
                 <div className="player-two-container">

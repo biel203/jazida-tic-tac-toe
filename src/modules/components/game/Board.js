@@ -16,7 +16,7 @@ class Board extends Component {
             }, 500)
         } else {
             if (this._verifyDraw.call(this, squares)) {
-                hasDraw();
+                hasDraw(true);
                 setTimeout(() => {
                     resetGame()
                 }, 500)

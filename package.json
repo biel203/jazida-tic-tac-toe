@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.4.1",
     "react": "^16.4.2",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-redux-toastr": "^7.4.0",
